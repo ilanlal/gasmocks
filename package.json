@@ -11,6 +11,18 @@
   "author": "Ilan Lalaloum <ilanlal@gmail.com> (https://www.easyadm.com)",
   "type": "commonjs",
   "main": "./src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilanlal/gasmocks.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public",
+    "tag": "latest"
+  },
+  "bugs": {
+    "url": "https://github.com/ilanlal/gasmocks/issues"
+  },
   "scripts": {
     "test": "jest",
     "build": "webpack --mode production",
