@@ -1,16 +1,17 @@
 {
   "name": "@ilanlal/gasmocks",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "testing gas with node.js ",
+  "homepage": "https://github.com/ilanlal/gasmocks#readme",
+  "license": "MIT",
+  "author": "Ilan Lalaloum <ilanlal@gmail.com> (https://github.com/ilanlal)",
+  "type": "commonjs",
+  "main": "./src/index.js",
   "keywords": [
     "gas",
     "appscripts",
     "telegram"
   ],
-  "license": "MIT",
-  "author": "Ilan Lalaloum <ilanlal@gmail.com> (https://www.easyadm.com)",
-  "type": "commonjs",
-  "main": "./src/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ilanlal/gasmocks.git"
