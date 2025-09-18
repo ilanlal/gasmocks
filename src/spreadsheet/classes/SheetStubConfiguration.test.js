@@ -21,4 +21,21 @@ describe('SheetStubConfiguration', () => {
     SheetStubConfiguration.setActiveRange(range)
     expect(SheetStubConfiguration.getActiveRange()).toBe(range)
   });
+
+  // appendRow
+  it('Should append a row to the sheet', () => {
+    const initialValues = SheetStubConfiguration.getDataRange().getValues()
+    const newRow = ['New', 'Row']
+    SheetStubConfiguration.appendRow(newRow)
+    const updatedValues = SheetStubConfiguration.getDataRange().getValues()
+    expect(updatedValues.length).toBe(initialValues.length + 1)
+    expect(updatedValues[updatedValues.length - 1]).toEqual(newRow)
+  });
+
+  it('Should clear the sheet', () => {
+    SheetStubConfiguration.appendRow(['Data'])
+    expect(SheetStubConfiguration.getLastRow()).toBe(2) // Including header row
+    SheetStubConfiguration.clear()
+    expect(SheetStubConfiguration.getLastRow()).toBe(1) // Only header row remains
+  });
 })

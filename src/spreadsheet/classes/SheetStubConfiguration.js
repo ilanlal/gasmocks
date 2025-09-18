@@ -19,7 +19,12 @@ class SheetStubConfiguration {
     }
 
     clear() {
-        this._range = RangeStubConfiguration
+        this._range.reset()
+        return this._range
+    }
+
+    getActiveCellRange() {
+        return this._range
     }
 
     getActiveCell() {
