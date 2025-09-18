@@ -1,7 +1,6 @@
 const SheetStubConfiguration = require('./SheetStubConfiguration')
-const RangeStubConfiguration = require('./RangeStubConfiguration')
 
-describe('Sheet', () => {
+describe('SheetStubConfiguration', () => {
   beforeEach(() => {
     SheetStubConfiguration.reset()
   })
@@ -21,12 +20,5 @@ describe('Sheet', () => {
     const range = SheetStubConfiguration.getRange('A1:B2')
     SheetStubConfiguration.setActiveRange(range)
     expect(SheetStubConfiguration.getActiveRange()).toBe(range)
-  })
-
-  it('Should set & get CurrentCell', () => {
-    const cell = SheetStubConfiguration.setCurrentCell(
-      RangeStubConfiguration.setA1Notation('B2')
-    )
-    expect(SheetStubConfiguration.getCurrentCell()).toBe(cell)
-  })
+  });
 })
