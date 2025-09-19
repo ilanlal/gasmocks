@@ -1,4 +1,4 @@
-const Spreadsheet = require('../Spreadsheet')
+const Spreadsheet = require('./Spreadsheet')
 const SpreadsheetStubConfiguration = require('./SpreadsheetStubConfiguration')
 
 describe('SpreadsheetStubConfiguration', () => {

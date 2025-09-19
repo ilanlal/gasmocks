@@ -1,4 +1,4 @@
-const Spreadsheet = require('../spreadsheet/Spreadsheet')
+const Spreadsheet = require('./classes/Spreadsheet')
 const SpreadSheetApp = require('./SpreadsheetApp')
 
 describe('SpreadSheetApp', () => {

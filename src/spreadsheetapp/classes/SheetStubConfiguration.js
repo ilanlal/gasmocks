@@ -15,6 +15,10 @@ class SheetStubConfiguration {
     }
 
     appendRow(rowContents) {
+        if (this._range.getLastRow() === 0) {
+            this._range.setValues([rowContents])
+            return this._range
+        }
         return this._range.setValues([...this._range.getValues(), rowContents])
     }
 

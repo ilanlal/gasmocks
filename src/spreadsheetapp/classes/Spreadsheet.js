@@ -1,4 +1,4 @@
-const SpreadsheetStubConfiguration = require('./classes/SpreadsheetStubConfiguration')
+const SpreadsheetStubConfiguration = require('./SpreadsheetStubConfiguration')
 
 class Spreadsheet {
   static getCurrentCell() {

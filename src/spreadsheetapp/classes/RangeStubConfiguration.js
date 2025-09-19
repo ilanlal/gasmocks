@@ -3,9 +3,9 @@ const SheetStubConfiguration = require('./SheetStubConfiguration')
 
 class RangeStubConfiguration {
     constructor() {
-        this._sheet = SheetStubConfiguration
-        this._a1Notation = 'A1'
-        this._values = [[]]
+        this._sheet = SheetStubConfiguration;
+        this._a1Notation = 'A1';
+        this._values = [[]];
     }
 
     activate() {
@@ -31,6 +31,9 @@ class RangeStubConfiguration {
     }
 
     getLastRow() {
+        if (this._values[0][0] === null || this._values[0][0] === undefined) {
+            return 0
+        }
         return this._values.length
     }
 
@@ -56,26 +59,30 @@ class RangeStubConfiguration {
     }
 
     setHorizontalAlignment(value) {
-        this._horizontalAlignment = value
+        this._horizontalAlignment = value;
+        return this;
     }
 
     setVerticalAlignment(value) {
-        this._verticalAlignment = value
+        this._verticalAlignment = value;
+        return this;
     }
 
     setValue(value) {
-        this._values[0][0] = value
+        this._values[0][0] = value;
+        return this;
     }
 
     setValues(values) {
-        this._values = [...values]
+        this._values = values;
+        return this;
     }
 
     reset() {
-        this._sheet = SheetStubConfiguration
-        this._a1Notation = 'A1'
-        this._values = [[]]
+        this._sheet = SheetStubConfiguration;
+        this._a1Notation = 'A1';
+        this._values = [[]];
     }
 }
 
-module.exports = new RangeStubConfiguration()
+module.exports = new RangeStubConfiguration();

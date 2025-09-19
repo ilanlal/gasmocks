@@ -11,9 +11,11 @@ const UrlFetchAppStubConfiguration = require('./url-fetch/classes/UrlFetchAppStu
 const Session = require('./base/classes/Session');
 const Logger = require('./base/classes/Logger');
 const SpreadsheetApp = require('./spreadsheetapp/SpreadsheetApp');
-const Spreadsheet = require('./spreadsheet/Spreadsheet');
-const SpreadsheetStubConfiguration = require('./spreadsheet/classes/SpreadsheetStubConfiguration');
+const Spreadsheet = require('./spreadsheetapp/classes/Spreadsheet');
+const SpreadsheetStubConfiguration = require('./spreadsheetapp/classes/SpreadsheetStubConfiguration');
 const ScriptAppStubConfiguration = require('./script/classes/ScriptAppStubConfiguration');
+const Sheet = require('./spreadsheetapp/classes/Sheet');
+const Range = require('./spreadsheetapp/classes/Range');
 
 global.Utilities = Utilities;
 global.ScriptApp = ScriptApp;
