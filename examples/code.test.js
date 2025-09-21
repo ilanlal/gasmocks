@@ -1,4 +1,4 @@
-require('../dist');
+require('../src');
 
 const {
     usePropertiesService,
