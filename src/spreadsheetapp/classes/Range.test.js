@@ -11,4 +11,22 @@ describe('Range', () => {
         expect(values).toBeDefined();
         expect(Array.isArray(values)).toBe(true);
     });
+
+    it('Should set values of the range', () => {
+        const newValues = [[1, 2], [3, 4]];
+        Range.setValues(newValues);
+        const values = Range.getValues();
+        expect(values).toEqual(newValues);
+    });
+
+    it('Should get a specific cell from the range', () => {
+        const cell = Range.getCell(0, 0);
+        expect(cell.getA1Notation()).toBe('A1');
+    });
+
+    it('Should create a text finder', () => {
+        const textFinder = Range.createTextFinder('test');
+        expect(textFinder).toBeDefined();
+        expect(textFinder.findText).toBe('test');
+    });
 });

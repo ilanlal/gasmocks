@@ -5,6 +5,10 @@ class Range {
     RangeStubConfiguration.activate();
   }
 
+  static createTextFinder(findText) {
+    return RangeStubConfiguration.createTextFinder(findText);
+  }
+
   static getA1Notation() {
     return RangeStubConfiguration.getA1Notation();
   }

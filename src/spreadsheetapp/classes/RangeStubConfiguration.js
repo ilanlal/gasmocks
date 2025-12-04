@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 const SheetStubConfiguration = require('./SheetStubConfiguration')
 
 class RangeStubConfiguration {
@@ -10,6 +9,16 @@ class RangeStubConfiguration {
 
     activate() {
         this._sheet.setActiveRange(this)
+    }
+
+    createTextFinder(findText) {
+        // Implement the logic for creating a text finder
+        // This is a stub method and should be customized as needed
+        return {
+            findText: findText,
+            findNext: () => null,
+            findAll: () => []
+        };
     }
 
     getA1Notation() {
@@ -73,7 +82,17 @@ class RangeStubConfiguration {
         return this;
     }
 
-    setValues(values) {
+    setValues(values = [[]]) {
+        if (!Array.isArray(values) || !Array.isArray(values[0])) {
+            throw new Error('Input must be a 2D array');
+        }
+        if (values.length === 0 || values[0].length === 0) {
+            this._values = [[]];
+            return this;
+        }
+        if (values.length > 1000 || values[0].length > 1000) {
+            throw new Error('Input exceeds maximum allowed size of 1000x1000');
+        }
         this._values = values;
         return this;
     }
