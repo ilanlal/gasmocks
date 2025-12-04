@@ -35,7 +35,7 @@ describe('Range', () => {
         const range = Range;
         range.setValues([['hello', 'world'], ['foo', 'bar']]);
         const textFinder = range.createTextFinder('world');
-        const foundRange = textFinder.findNext().getCurrentMatch();
+        const foundRange = textFinder.findNext();
         expect(foundRange.getA1Notation()).toBe('B1');
         expect(foundRange.getValue()).toBe('world');
     });

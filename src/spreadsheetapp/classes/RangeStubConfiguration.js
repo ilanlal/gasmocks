@@ -17,23 +17,19 @@ class RangeStubConfiguration {
         return {
             findText: findText,
             findNext: () => {
-                return {
-                    getCurrentMatch: () => {
-                        const values = this.getValues();
+                const values = this.getValues();
 
-                        for (let r = 0; r < values.length; r++) {
-                            for (let c = 0; c < values[r].length; c++) {
-                                if (values[r][c] === findText) {
-                                    return new RangeStubConfiguration()
-                                        .setA1Notation(`${String.fromCharCode(65 + c)}${r + 1}`)
-                                        .setValue(values[r][c]);
-                                }
-                            }
+                for (let r = 0; r < values.length; r++) {
+                    for (let c = 0; c < values[r].length; c++) {
+                        if (values[r][c] === findText) {
+                            return new RangeStubConfiguration()
+                                .setA1Notation(`${String.fromCharCode(65 + c)}${r + 1}`)
+                                .setValue(values[r][c]);
                         }
-
-                        return null; // No match found
                     }
                 }
+
+                return null; // No match found
             }
         };
     }
