@@ -12,10 +12,6 @@ class TextParagraph extends Widget {
 
     return this;
   }
-
-  getData() {
-    return { textParagraph: super.getData() }
-  }
 }
 
 module.exports = TextParagraph
