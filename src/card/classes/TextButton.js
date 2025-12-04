@@ -1,6 +1,3 @@
-// Obsolete
-// const set = require('lodash.set')
-
 // Simple implementation of lodash.set
 const set = (obj, path, value) => {
   const keys = path.split('.')
