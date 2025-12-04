@@ -14,14 +14,17 @@ This library is particularly useful for unit testing and integration testing of 
 
 ## Installation
 
+You can install the package directly from the GitHub repository using npm or yarn:
+> Note: This package is not published on npm registry. So, you need to install it directly from the GitHub repository. Sorry for the inconvenience.
+
 ```bash
-npm install @ilanlal/gasmocks
+npm i https://github.com/ilanlal/gasmocks --save-dev
 ```
 
 or
 
 ```bash
-yarn add @ilanlal/gasmocks
+yarn add https://github.com/ilanlal/gasmocks --dev
 ```
 
 ## Usage
