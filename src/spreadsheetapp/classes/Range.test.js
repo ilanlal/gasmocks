@@ -29,4 +29,14 @@ describe('Range', () => {
         expect(textFinder).toBeDefined();
         expect(textFinder.findText).toBe('test');
     });
+
+    // find text finder test
+    it('Should find text using the text finder', () => {
+        const range = Range;
+        range.setValues([['hello', 'world'], ['foo', 'bar']]);
+        const textFinder = range.createTextFinder('world');
+        const foundRange = textFinder.findNext().getCurrentMatch();
+        expect(foundRange.getA1Notation()).toBe('B1');
+        expect(foundRange.getValue()).toBe('world');
+    });
 });

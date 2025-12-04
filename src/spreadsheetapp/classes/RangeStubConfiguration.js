@@ -16,8 +16,25 @@ class RangeStubConfiguration {
         // This is a stub method and should be customized as needed
         return {
             findText: findText,
-            findNext: () => null,
-            findAll: () => []
+            findNext: () => {
+                return {
+                    getCurrentMatch: () => {
+                        const values = this.getValues();
+
+                        for (let r = 0; r < values.length; r++) {
+                            for (let c = 0; c < values[r].length; c++) {
+                                if (values[r][c] === findText) {
+                                    return new RangeStubConfiguration()
+                                        .setA1Notation(`${String.fromCharCode(65 + c)}${r + 1}`)
+                                        .setValue(values[r][c]);
+                                }
+                            }
+                        }
+
+                        return null; // No match found
+                    }
+                }
+            }
         };
     }
 
