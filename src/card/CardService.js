@@ -16,6 +16,7 @@ const Notification = require('./classes/Notification')
 const OpenLink = require('./classes/OpenLink')
 const SelectionInput = require('./classes/SelectionInput')
 const Suggestions = require('./classes/Suggestions')
+const Validation = require('./classes/Validation')
 const TextButton = require('./classes/TextButton')
 const TextInput = require('./classes/TextInput')
 const TextParagraph = require('./classes/TextParagraph')
@@ -33,7 +34,8 @@ const OnClose = require('./enums/OnClose')
 const OpenAs = require('./enums/OpenAs')
 const SelectionInputType = require('./enums/SelectionInputType')
 const TextButtonStyle = require('./enums/TextButtonStyle')
-
+const InputType = require('./enums/InputType');
+const TextInputMode = require('./enums/TextInputMode');
 class CardService {
   static newAction () {
     return new Action()
@@ -127,6 +129,10 @@ class CardService {
     return new Switch()
   }
 
+  static newValidation () {
+    return new Validation()
+  }
+
   static get ComposeEmailType () {
     return ComposeEmailType
   }
@@ -161,6 +167,14 @@ class CardService {
 
   static get TextButtonStyle () {
     return TextButtonStyle
+  }
+
+  static get InputType() {
+    return InputType;
+  }
+
+  static get TextInputMode() {
+    return TextInputMode;
   }
 }
 

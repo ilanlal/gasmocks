@@ -2,32 +2,33 @@ const Widget = require('./Widget')
 const Action = require('./Action')
 const Suggestions = require('./Suggestions')
 const Validation = require('./Validation')
+
 class TextInput extends Widget {
-  setFieldName (fieldName) {
+  setFieldName(fieldName) {
     this._data.text = fieldName
 
     return this
   }
 
-  setHint (hint) {
+  setHint(hint) {
     this._data.hint = hint
 
     return this
   }
 
-  setInputMode (inputMode) {
+  setInputMode(inputMode) {
     this._data.inputMode = inputMode
 
     return this
   }
 
-  setMultiline (multiline) {
+  setMultiline(multiline) {
     this._data.multiline = multiline
 
     return this
   }
 
-  setOnChangeAction (action) {
+  setOnChangeAction(action) {
     if ((action instanceof Action) === false) {
       throw new Error('Invalid value passed for "setOnChangeAction"')
     }
@@ -37,7 +38,7 @@ class TextInput extends Widget {
     return this
   }
 
-  setSuggestions (suggestions) {
+  setSuggestions(suggestions) {
     if ((suggestions instanceof Suggestions) === false) {
       throw new Error('Invalid value passed for "setSuggestionsAction"')
     }
@@ -47,7 +48,7 @@ class TextInput extends Widget {
     return this
   }
 
-  setSuggestionsAction (suggestionsAction) {
+  setSuggestionsAction(suggestionsAction) {
     if ((suggestionsAction instanceof Action) === false) {
       throw new Error('Invalid value passed for "setSuggestionsAction"')
     }
@@ -57,7 +58,7 @@ class TextInput extends Widget {
     return this
   }
 
-  setTitle (title) {
+  setTitle(title) {
     this._data.title = title
 
     return this
@@ -73,7 +74,7 @@ class TextInput extends Widget {
     return this
   }
 
-  setValue (value) {
+  setValue(value) {
     this._data.value = value
 
     return this
