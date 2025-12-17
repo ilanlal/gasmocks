@@ -2,12 +2,12 @@ const BaseClass = require('../../helpers/BaseClass')
 const Card = require('./Card')
 
 class Navigation extends BaseClass {
-  constructor () {
+  constructor() {
     super()
     this._data.cardNavigations = []
   }
 
-  pushCard (card) {
+  pushCard(card) {
     if ((card instanceof Card) === false) {
       throw new Error('Invalid value passed for "pushCard"')
     }
@@ -17,7 +17,7 @@ class Navigation extends BaseClass {
     return this
   }
 
-  updateCard (card) {
+  updateCard(card) {
     if ((card instanceof Card) === false) {
       throw new Error('Invalid value passed for "updateCard"')
     }
@@ -27,17 +27,24 @@ class Navigation extends BaseClass {
     return this
   }
 
-  popCard () {
+  popCard() {
     this._data
       .cardNavigations
       .push({ popCard: null })
     return this
   }
 
-  popToRoot () {
+  popToRoot() {
     this._data
       .cardNavigations
       .push({ popToRoot: null })
+    return this
+  }
+
+  popToNamedCard(name) {
+    this._data
+      .cardNavigations
+      .push({ popToNamedCard: { name } })
     return this
   }
 }
