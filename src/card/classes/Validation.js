@@ -14,7 +14,7 @@ class Validation extends BaseClass {
     return this
   }
 
-  setType(type = CardService.InputType.TEXT) {
+  setInputType(type = CardService.InputType.TEXT) {
     this._data.type = type
     return this
   }
