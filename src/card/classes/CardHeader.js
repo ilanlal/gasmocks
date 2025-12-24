@@ -1,31 +1,31 @@
 const BaseClass = require('../../helpers/BaseClass')
 
 class CardHeader extends BaseClass {
-  setImageStyle (imageStyle) {
+  setImageStyle(imageStyle) {
     this._data.imageStyle = imageStyle
 
     return this
   }
 
-  setImageUrl (imageUrl) {
+  setImageUrl(imageUrl) {
     this._data.imageUrl = imageUrl
 
     return this
   }
 
-  setSubtitle (subTitle) {
+  setSubtitle(subTitle) {
     this._data.subTitle = subTitle
 
     return this
   }
 
-  setTitle (title) {
+  setTitle(title) {
     this._data.title = title
 
     return this
   }
 
-  setImageAltText (altText) {
+  setImageAltText(altText) {
     this._data.imageAltText = altText
 
     return this

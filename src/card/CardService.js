@@ -14,6 +14,7 @@ const KeyValue = require('./classes/KeyValue')
 const Navigation = require('./classes/Navigation')
 const Notification = require('./classes/Notification')
 const OpenLink = require('./classes/OpenLink')
+const LinkPreview = require('./classes/LinkPreview')
 const SelectionInput = require('./classes/SelectionInput')
 const Suggestions = require('./classes/Suggestions')
 const Validation = require('./classes/Validation')
@@ -23,6 +24,7 @@ const TextParagraph = require('./classes/TextParagraph')
 const UniversalActionResponseBuilder = require('./classes/UniversalActionResponseBuilder')
 const Switch = require('./classes/Switch')
 const DecoratedText = require('./classes/DecoratedText')
+const MaterialIcon = require('./classes/IconImage')
 
 // enums
 const ComposeEmailType = require('./enums/ComposedEmailType')
@@ -36,136 +38,145 @@ const SelectionInputType = require('./enums/SelectionInputType')
 const TextButtonStyle = require('./enums/TextButtonStyle')
 const InputType = require('./enums/InputType');
 const TextInputMode = require('./enums/TextInputMode');
+
 class CardService {
-  static newAction () {
+  static newAction() {
     return new Action()
   }
 
-  static newActionResponseBuilder () {
+  static newActionResponseBuilder() {
     return new ActionResponseBuilder()
   }
 
-  static newAuthorizationAction () {
+  static newAuthorizationAction() {
     return new AuthorizationAction()
   }
 
-  static newButtonSet () {
+  static newButtonSet() {
     return new ButtonSet()
   }
 
-  static newCardAction () {
+  static newCardAction() {
     return new CardAction()
   }
 
-  static newCardBuilder () {
+  static newCardBuilder() {
     return new CardBuilder()
   }
 
-  static newCardHeader () {
+  static newCardHeader() {
     return new CardHeader()
   }
 
-  static newCardSection () {
+  static newCardSection() {
     return new CardSection()
   }
 
-  static newImage () {
+  static newImage() {
     return new Image()
   }
 
-  static newImageButton () {
+  static newImageButton() {
     return new ImageButton()
   }
 
-  static newKeyValue () {
+  static newKeyValue() {
     return new KeyValue()
   }
 
-  static newNavigation () {
+  static newNavigation() {
     return new Navigation()
   }
 
-  static newNotification () {
+  static newNotification() {
     return new Notification()
   }
 
-  static newOpenLink () {
+  static newOpenLink() {
     return new OpenLink()
   }
 
-  static newSelectionInput () {
+  static newSelectionInput() {
     return new SelectionInput()
   }
 
-  static newSuggestions () {
+  static newSuggestions() {
     return new Suggestions()
   }
 
-  static newTextButton () {
+  static newTextButton() {
     return new TextButton()
   }
 
-  static newTextInput () {
+  static newTextInput() {
     return new TextInput()
   }
 
-  static newTextParagraph () {
+  static newTextParagraph() {
     return new TextParagraph()
   }
 
-  static newUniversalActionResponseBuilder () {
+  static newUniversalActionResponseBuilder() {
     return new UniversalActionResponseBuilder()
   }
 
-  static newFixedFooter () {
+  static newFixedFooter() {
     return new FixedFooter()
   }
 
-  static newDecoratedText () {
+  static newDecoratedText() {
     return new DecoratedText()
   }
 
-  static newSwitch () {
+  static newSwitch() {
     return new Switch()
   }
 
-  static newValidation () {
+  static newValidation() {
     return new Validation()
   }
 
-  static get ComposeEmailType () {
+  static newLinkPreview() {
+    return new LinkPreview()
+  }
+
+  static newMaterialIcon() {
+    return new MaterialIcon()
+  }
+
+  static get ComposeEmailType() {
     return ComposeEmailType
   }
 
-  static get Icon () {
+  static get Icon() {
     return Icon
   }
 
-  static get ImageStyle () {
+  static get ImageStyle() {
     return ImageStyle
   }
 
-  static get LoadIndicator () {
+  static get LoadIndicator() {
     return LoadIndicator
   }
 
-  static get NotificationType () {
+  static get NotificationType() {
     return NotificationType
   }
 
-  static get OnClose () {
+  static get OnClose() {
     return OnClose
   }
 
-  static get OpenAs () {
+  static get OpenAs() {
     return OpenAs
   }
 
-  static get SelectionInputType () {
+  static get SelectionInputType() {
     return SelectionInputType
   }
 
-  static get TextButtonStyle () {
+  static get TextButtonStyle() {
     return TextButtonStyle
   }
 

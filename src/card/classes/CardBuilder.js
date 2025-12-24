@@ -1,43 +1,43 @@
 const Card = require('./Card')
 
 class CardBuilder {
-  constructor () {
-    this._card = new Card()
+  constructor() {
+    this._card = new Card();
   }
 
-  addCardAction (cardAction) {
-    this._card.addCardAction(cardAction)
+  addCardAction(cardAction) {
+    this._card.addCardAction(cardAction);
 
-    return this
+    return this;
   }
 
-  setName (name) {
-    this._card.setName(name)
+  setName(name) {
+    this._card.setName(name);
 
-    return this
+    return this;
   }
 
-  setHeader (header) {
-    this._card.setHeader(header)
+  setHeader(header) {
+    this._card.setHeader(header);
 
-    return this
+    return this;
   }
 
-  addSection (section) {
-    this._card.addSection(section)
+  addSection(section) {
+    this._card.addSection(section);
 
-    return this
+    return this;
   }
 
-  setFixedFooter (fixedFooter) {
-    this._card.setFixedFooter(fixedFooter)
+  setFixedFooter(fixedFooter) {
+    this._card.setFixedFooter(fixedFooter);
 
-    return this
+    return this;
   }
 
-  build () {
-    return this._card
+  build() {
+    return this._card;
   }
 }
 
-module.exports = CardBuilder
+module.exports = CardBuilder;
