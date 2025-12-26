@@ -19,8 +19,8 @@ describe('Action', () => {
 
   it('Should add required widgets', () => {
     const data = new Action();
-    data.addRequiredWidgets('field1');
-    data.addRequiredWidgets('field2');
+    data.addRequiredWidget('field1');
+    data.addRequiredWidget('field2');
     expect(data.getData()).toEqual({ requiredWidgets: ['field1', 'field2'] });
   });
 
