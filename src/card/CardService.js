@@ -38,6 +38,7 @@ const SelectionInputType = require('./enums/SelectionInputType')
 const TextButtonStyle = require('./enums/TextButtonStyle')
 const InputType = require('./enums/InputType');
 const TextInputMode = require('./enums/TextInputMode');
+const Visibility = require('./enums/Visibility');
 
 class CardService {
   static newAction() {
@@ -186,6 +187,10 @@ class CardService {
 
   static get TextInputMode() {
     return TextInputMode;
+  }
+
+  static get Visibility() {
+    return Visibility;
   }
 }
 
