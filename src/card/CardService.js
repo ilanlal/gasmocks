@@ -8,6 +8,7 @@ const CardBuilder = require('./classes/CardBuilder')
 const CardHeader = require('./classes/CardHeader')
 const CardSection = require('./classes/CardSection')
 const FixedFooter = require('./classes/FixedFooter')
+const IconImage = require('./classes/IconImage')
 const Image = require('./classes/Image')
 const ImageButton = require('./classes/ImageButton')
 const KeyValue = require('./classes/KeyValue')
@@ -79,6 +80,10 @@ class CardService {
 
   static newImageButton() {
     return new ImageButton()
+  }
+
+  static newIconImage() {
+    return new IconImage()
   }
 
   static newKeyValue() {
