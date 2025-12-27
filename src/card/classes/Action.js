@@ -4,6 +4,8 @@ class Action extends BaseClass {
   addRequiredWidget(fieldName) {
     this._data.requiredWidgets = this._data.requiredWidgets || [];
     this._data.requiredWidgets.push(fieldName);
+
+    return this;
   }
 
   setFunctionName(functionName) {
