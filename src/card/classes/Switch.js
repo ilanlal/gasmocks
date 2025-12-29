@@ -1,41 +1,39 @@
-/* eslint-disable indent */
-const BaseClass = require('../../helpers/BaseClass')
-const Action = require('./Action')
+const BaseClass = require('../../helpers/BaseClass');
+const Action = require('./Action');
 /**
  * @see https://developers.google.com/apps-script/reference/card-service/switch
  */
 class Switch extends BaseClass {
+    setControlType(controlType) {
+        this._data.controlType = controlType;
+        return this;
+    }
+
+    setFieldName(name) {   
+        this._data.fieldName = name;
+        return this;
+    }
+
     setOnChangeAction(action) {
         if ((action instanceof Action) === false) {
-            throw new Error('OnChange action must be an instance of Action')
+            throw new Error('OnChange action must be an instance of Action');
         }
-        this._data.onChangeAction = action.getData()
-        return this
+        this._data.onChangeAction = action.getData();
+        return this;
     }
 
-    setSelector(selector) {
-        if (typeof selector !== 'string') {
-            throw new Error('Selector must be a string')
+    setSelected(selected) {
+        if (typeof selected !== 'boolean') {
+            throw new Error('Selected must be a boolean');
         }
-        this._data.selector = selector
-        return this
-    }
-
-    setFriendlyName(name) {
-        if (typeof name !== 'string') {
-            throw new Error('Friendly name must be a string')
-        }
-        this._data.friendlyName = name
-        return this
+        this._data.selected = selected;
+        return this;
     }
 
     setValue(value) {
-        if (typeof value !== 'boolean') {
-            throw new Error('Value must be a boolean')
-        }
-        this._data.value = value
-        return this
+        this._data.value = value;
+        return this;
     }
 }
 
-module.exports = Switch
+module.exports = Switch;
