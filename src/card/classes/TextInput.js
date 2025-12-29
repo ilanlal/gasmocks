@@ -1,13 +1,18 @@
-const Widget = require('./Widget')
-const Action = require('./Action')
-const Suggestions = require('./Suggestions')
-const Validation = require('./Validation')
+const Widget = require('./Widget');
+const Action = require('./Action');
+const Suggestions = require('./Suggestions');
+const Validation = require('./Validation');
 
 class TextInput extends Widget {
-  setFieldName(fieldName) {
-    this._data.text = fieldName
+  setId(id) {
+    this._data.id = id;
+    return this;
+  }
 
-    return this
+  setFieldName(fieldName) {
+    this._data.text = fieldName;
+
+    return this;
   }
 
   setHint(hint) {
@@ -17,8 +22,8 @@ class TextInput extends Widget {
   }
 
   setInputMode(inputMode) {
-    this._data.inputMode = inputMode
-
+    this._data.inputMode = inputMode;
+    ;
     return this
   }
 
@@ -66,12 +71,12 @@ class TextInput extends Widget {
 
   setValidation(validation) {
     if ((validation instanceof Validation) === false) {
-      throw new Error('Invalid value passed for "setValidation"')
+      throw new Error('Invalid value passed for "setValidation"');
     }
 
-    this._data.validation = validation
+    this._data.validation = validation;
 
-    return this
+    return this;
   }
 
   setValue(value) {
