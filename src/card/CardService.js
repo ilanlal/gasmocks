@@ -42,7 +42,7 @@ const TextButtonStyle = require('./enums/TextButtonStyle')
 const InputType = require('./enums/InputType');
 const TextInputMode = require('./enums/TextInputMode');
 const Visibility = require('./enums/Visibility');
-
+const GridItemLayout = require('./enums/GridItemLayout');
 class CardService {
   static newAction() {
     return new Action()
@@ -206,6 +206,10 @@ class CardService {
 
   static get Visibility() {
     return Visibility;
+  }
+
+  static get GridItemLayout() {
+    return GridItemLayout;
   }
 }
 
