@@ -28,7 +28,7 @@ const DecoratedText = require('./classes/DecoratedText')
 const MaterialIcon = require('./classes/IconImage')
 const Grid = require('./classes/Grid')
 const GridItem = require('./classes/GridItem')
-
+const BorderStyle = require('./classes/BorderStyle')
 // enums
 const ComposeEmailType = require('./enums/ComposedEmailType')
 const Icon = require('./enums/Icon')
@@ -43,6 +43,7 @@ const InputType = require('./enums/InputType');
 const TextInputMode = require('./enums/TextInputMode');
 const Visibility = require('./enums/Visibility');
 const GridItemLayout = require('./enums/GridItemLayout');
+const BorderType = require('./enums/BorderType');
 class CardService {
   static newAction() {
     return new Action()
@@ -160,6 +161,10 @@ class CardService {
     return new GridItem()
   }
 
+  static newBorderStyle() {
+    return new BorderStyle()
+  }
+
   static get ComposeEmailType() {
     return ComposeEmailType
   }
@@ -210,6 +215,10 @@ class CardService {
 
   static get GridItemLayout() {
     return GridItemLayout;
+  }
+
+  static get BorderType() {
+    return BorderType;
   }
 }
 
