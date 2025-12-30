@@ -1,4 +1,5 @@
 const BaseClass = require('../../helpers/BaseClass');
+const GridItem = require('./GridItem');
 
 class Grid extends BaseClass {
     addItem(gridItem) {
