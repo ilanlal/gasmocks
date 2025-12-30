@@ -1,5 +1,3 @@
-const BaseClass = require('../../helpers/BaseClass');
-const BorderType = require('../enums/BorderType');
 const Widget = require('./Widget');
 
 class BorderStyle extends Widget {
@@ -18,9 +16,6 @@ class BorderStyle extends Widget {
     }
 
     setType(type) {
-        if ((type instanceof BorderType) === false) {
-            throw new Error('Type must be an instance of BorderType');
-        }
         this._data.type = type;
         return this;
     }

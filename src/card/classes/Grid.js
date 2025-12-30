@@ -1,5 +1,6 @@
 const Widget = require('./Widget');
 const GridItem = require('./GridItem');
+const BorderStyle = require('./BorderStyle');
 
 class Grid extends Widget { 
     addItem(gridItem) {
