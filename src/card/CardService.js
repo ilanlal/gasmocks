@@ -162,7 +162,7 @@ class CardService {
   }
 
   static newBorderStyle() {
-    return new BorderStyle()
+    return new BorderStyle();
   }
 
   static get ComposeEmailType() {

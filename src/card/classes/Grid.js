@@ -11,6 +11,9 @@ class Grid extends Widget {
         return this;
     }
     setBorderStyle(borderStyle) {
+        if ((borderStyle instanceof BorderStyle) === false) {
+            throw new Error('Border style must be an instance of BorderStyle');
+        }
         this._data.borderStyle = borderStyle;
         return this;
     }
