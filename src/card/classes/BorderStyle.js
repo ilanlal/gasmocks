@@ -10,10 +10,12 @@ class BorderStyle extends BaseClass {
         this._data.cornerRadius = radius;
         return this;
     }
+    
     setStrokeColor(color) {
         this._data.strokeColor = color;
         return this;
     }
+
     setType(type) {
         if ((type instanceof BorderType) === false) {
             throw new Error('Type must be an instance of BorderType');
