@@ -26,6 +26,8 @@ const UniversalActionResponseBuilder = require('./classes/UniversalActionRespons
 const Switch = require('./classes/Switch')
 const DecoratedText = require('./classes/DecoratedText')
 const MaterialIcon = require('./classes/IconImage')
+const Grid = require('./classes/Grid')
+const GridItem = require('./classes/GridItem')
 
 // enums
 const ComposeEmailType = require('./enums/ComposedEmailType')
@@ -148,6 +150,14 @@ class CardService {
 
   static newMaterialIcon() {
     return new MaterialIcon()
+  }
+
+  static newGrid() {
+    return new Grid()
+  }
+
+  static newGridItem() {
+    return new GridItem()
   }
 
   static get ComposeEmailType() {
