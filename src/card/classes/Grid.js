@@ -1,7 +1,7 @@
-const BaseClass = require('../../helpers/BaseClass');
+const Widget = require('./Widget');
 const GridItem = require('./GridItem');
 
-class Grid extends BaseClass {
+class Grid extends Widget { 
     addItem(gridItem) {
         if ((gridItem instanceof GridItem) === false) {
             throw new Error('Item must be an instance of GridItem');
