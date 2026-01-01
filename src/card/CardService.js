@@ -29,6 +29,7 @@ const MaterialIcon = require('./classes/MaterialIcon')
 const Grid = require('./classes/Grid')
 const GridItem = require('./classes/GridItem')
 const BorderStyle = require('./classes/BorderStyle')
+const Divider = require('./classes/Divider')
 
 // enums
 const ComposeEmailType = require('./enums/ComposedEmailType')
@@ -165,6 +166,10 @@ class CardService {
 
   static newBorderStyle() {
     return new BorderStyle();
+  }
+
+  static newDivider() {
+    return new Divider();
   }
 
   static get ComposeEmailType() {
