@@ -18,7 +18,7 @@ const set = (obj, path, value) => {
 const Button = require('./Button');
 const OpenLink = require('./OpenLink');
 const Action = require('./Action');
-const MaterialIcon = require('./IconImage');
+const MaterialIcon = require('./MaterialIcon');
 const ImageButtonStyle = require('../enums/ImageButtonStyle');
 
 class ImageButton extends Button {
