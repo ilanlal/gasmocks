@@ -3,25 +3,34 @@
 
 // Simple implementation of lodash.set
 const set = (obj, path, value) => {
-  const keys = path.split('.')
-  let current = obj
+  const keys = path.split('.');
+  let current = obj;
   keys.forEach((key, index) => {
     if (index === keys.length - 1) {
-      current[key] = value
+      current[key] = value;
     } else {
-      current[key] = current[key] || {}
+      current[key] = current[key] || {};
     }
-    current = current[key]
+    current = current[key];
   })
 }
-const Button = require('./Button')
-const OpenLink = require('./OpenLink')
+
+const Button = require('./Button');
+const OpenLink = require('./OpenLink');
+const Action = require('./Action');
+const MaterialIcon = require('./IconImage');
+const ImageButtonStyle = require('../enums/ImageButtonStyle');
 
 class ImageButton extends Button {
-  setIconUrl(url) {
-    this._data.url = url
+  setAltText(altText) {
+    this._data.altText = altText;
+    return this;
+  }
 
-    return this
+  setIconUrl(url) {
+    this._data.url = url;
+
+    return this;
   }
 
   setIcon(icon) {
@@ -29,15 +38,52 @@ class ImageButton extends Button {
     return this;
   }
 
-  setOpenLink(openLink) {
-    if ((openLink instanceof OpenLink) === false) {
-      throw new Error('Invalid value passed for "setOpenLink"')
+  setImageButtonStyle(imageButtonStyle) {
+    if (!Object.values(ImageButtonStyle).includes(imageButtonStyle)) {
+      throw new Error('Invalid value passed for "setImageButtonStyle"');
     }
 
-    set(this._data, 'onClick.openLink', openLink.getData())
+    this._data.imageButtonStyle = imageButtonStyle;
+    return this;
+  }
 
-    return this
+  setMaterialIcon(icon) {
+    if (!(icon instanceof MaterialIcon)) {
+      throw new Error('Invalid value passed for "setMaterialIcon"');
+    }
+    
+
+    return this;
+  }
+
+  setOnClickAction(action) {
+    if ((action instanceof Action) === false) {
+      throw new Error('Invalid value passed for "setOnClickAction"');
+    }
+    set(this._data, 'onClick.action', action.getData());
+
+    return this;
+  }
+
+  setOpenLink(openLink) {
+    if ((openLink instanceof OpenLink) === false) {
+      throw new Error('Invalid value passed for "setOpenLink"');
+    }
+
+    set(this._data, 'onClick.openLink', openLink.getData());
+
+    return this;
+  }
+
+  setOnClickOpenLinkAction(action) {
+    if ((action instanceof Action) === false) {
+      throw new Error('Invalid value passed for "setOnClickOpenLinkAction"');
+    }
+
+    set(this._data, 'onClick.action', action.getData());
+
+    return this;
   }
 }
 
-module.exports = ImageButton
+module.exports = ImageButton;

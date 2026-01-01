@@ -1,0 +1,6 @@
+module.exports = {
+    BORDERLESS: 'BORDERLESS',
+    OUTLINED: 'OUTLINED',
+    FILLED: 'FILLED',
+    FILLED_TONAL: 'FILLED_TONAL'
+}
