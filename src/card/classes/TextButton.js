@@ -1,45 +1,60 @@
-// Simple implementation of lodash.set
-const set = (obj, path, value) => {
-  const keys = path.split('.')
-  let current = obj
-  keys.forEach((key, index) => {
-    if (index === keys.length - 1) {
-      current[key] = value
-    } else {
-      current[key] = current[key] || {}
-    }
-    current = current[key]
-  })
-}
-const Button = require('./Button')
-const AuthorizationAction = require('./AuthorizationAction')
+const Button = require('./Button');
+const AuthorizationAction = require('./AuthorizationAction');
+const MaterialIcon = require('./MaterialIcon');
+const TextButtonStyle = require('../enums/TextButtonStyle');
 
 class TextButton extends Button {
   setAuthorizationAction(action) {
     if ((action instanceof AuthorizationAction) === false) {
-      throw new Error('Invalid value passed for "setAuthorizationAction"')
+      throw new Error('Invalid value passed for "setAuthorizationAction"');
     }
 
-    set(this._data, 'onClick.openLink', action.getData())
+    this.set('onClick.openLink', action.getData());
 
-    return this
+    return this;
   }
 
-  setText(text) {
-    this._data.text = text
-    return this
-  }
-
-  setTextButtonStyle(style) {
-    this._data.style = style
-    return this
+  setBackgroundColor(backgroundColor) {
+    this._data.backgroundColor = backgroundColor;
+    return this;
   }
 
   setDisabled(disabled) {
-    this._data.disabled = disabled
-    return this
+    this._data.disabled = disabled;
+    return this;
   }
 
+  setIcon(icon) {
+    this._data.icon = icon;
+    return this;
+  }
+
+  setIconUrl(url) {
+    this._data.iconUrl = url;
+    return this;
+  }
+
+  setMaterialIcon(icon) {
+    if (!(icon instanceof MaterialIcon)) {
+      throw new Error('Invalid value passed for "setMaterialIcon"');
+    }
+    this._data.icon = icon.getData();
+    return this;
+  }
+
+  setText(text) {
+    this._data.text = text;
+    return this;
+  }
+
+  setTextButtonStyle(style) {
+    if (!Object.values(TextButtonStyle).includes(style)) {
+      throw new Error('Invalid value passed for "setTextButtonStyle"');
+    }
+
+    this._data.style = style;
+    return this;
+  }
   getData() {
     return { textButton: super.getData() }
   }

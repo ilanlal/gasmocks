@@ -1,59 +1,47 @@
-// Obsolete
-// const set = require('lodash.set')
-
-// Simple implementation of lodash.set
-const set = (obj, path, value) => {
-  // Should throw an exception: Invalid value passed for "setOpenLink"
-  if (typeof path !== 'string') {
-    throw new Error('Invalid value passed for "setOpenLink"')
-  }
-  const keys = path.split('.')
-  let current = obj
-  keys.forEach((key, index) => {
-    if (index === keys.length - 1) {
-      current[key] = value
-    } else {
-      current[key] = current[key] || {}
-    }
-    current = current[key]
-  })
-}
-
-const AuthorizationAction = require('./AuthorizationAction')
-const OpenLink = require('./OpenLink')
-const Action = require('./Action')
-const Widget = require('./Widget')
+const AuthorizationAction = require('./AuthorizationAction');
+const OpenLink = require('./OpenLink');
+const Action = require('./Action');
+const Widget = require('./Widget');
 
 class Button extends Widget {
-  setAuthorizationAction (action) {
+  setAuthorizationAction(action) {
     if ((action instanceof AuthorizationAction) === false) {
-      throw new Error('Invalid value passed for "setAuthorizationAction"')
+      throw new Error('Invalid value passed for "setAuthorizationAction"');
     }
 
-    set(this._data, 'onClick.action', action.getData())
+    this.set('onClick.action', action.getData());
 
-    return this
+    return this;
   }
 
-  setOnClickAction (action) {
+  setOnClickAction(action) {
     if ((action instanceof Action) === false) {
-      throw new Error('Invalid value passed for "setOnClickAction"')
+      throw new Error('Invalid value passed for "setOnClickAction"');
     }
 
-    set(this._data, 'onClick.action', action.getData())
+    this.set('onClick.action', action.getData());
 
-    return this
+    return this;
   }
 
-  setOpenLink (openLink) {
+  setOnClickOpenLinkAction(action) {
+    if ((action instanceof Action) === false) {
+      throw new Error('Invalid value passed for "setOnClickOpenLinkAction"');
+    }
+    this.set('onClick.action', action.getData());
+
+    return this;
+  }
+
+  setOpenLink(openLink) {
     if ((openLink instanceof OpenLink) === false) {
-      throw new Error('Invalid value passed for "setOpenLink"')
+      throw new Error('Invalid value passed for "setOpenLink"');
     }
 
-    set(this._data, 'onClick.openLink', openLink.getData())
+    this.set('onClick.openLink', openLink.getData());
 
-    return this
+    return this;
   }
 }
 
-module.exports = Button
+module.exports = Button;
