@@ -4,6 +4,11 @@ const MaterialIcon = require('./MaterialIcon');
 const TextButtonStyle = require('../enums/TextButtonStyle');
 
 class TextButton extends Button {
+  setAltText(altText) {
+    this._data.altText = altText;
+    return this;
+  }
+  
   setAuthorizationAction(action) {
     if ((action instanceof AuthorizationAction) === false) {
       throw new Error('Invalid value passed for "setAuthorizationAction"');
