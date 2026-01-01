@@ -51,8 +51,7 @@ class ImageButton extends Button {
     if (!(icon instanceof MaterialIcon)) {
       throw new Error('Invalid value passed for "setMaterialIcon"');
     }
-    
-
+    this._data.icon = icon.getData();
     return this;
   }
 
