@@ -9,14 +9,8 @@ class Column extends BaseClass {
             throw new Error('Invalid value passed for "addWidget"');
         }
 
-        if (widget instanceof Button) {
-            const buttonSet = new ButtonSet().addButton(widget);
-
-            this._data.widgets.push(buttonSet.getData());
-        } else {
-            this._data.widgets.push(widget.getData());
-        }
-
+        // Only one widget allowed per column
+        this._data.widget = widget.getData();
         return this;
     }
 
