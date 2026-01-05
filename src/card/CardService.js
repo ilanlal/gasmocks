@@ -31,6 +31,8 @@ const GridItem = require('./classes/GridItem')
 const BorderStyle = require('./classes/BorderStyle')
 const Divider = require('./classes/Divider')
 const Column = require('./classes/Column')
+const Columns = require('./classes/Columns')
+
 // enums
 const ComposeEmailType = require('./enums/ComposedEmailType')
 const Icon = require('./enums/Icon')
@@ -50,7 +52,13 @@ const ImageButtonStyle = require('./enums/ImageButtonStyle');
 const HorizontalAlignment = require('./enums/HorizontalAlignment');
 const VerticalAlignment = require('./enums/VerticalAlignment');
 const HorizontalSizeStyle = require('./enums/HorizontalSizeStyle');
+const WrapStyle = require('./enums/WrapStyle');
+
 class CardService {
+  static newColumns() {
+    return new Columns();
+  }
+
   static newAction() {
     return new Action()
   }
@@ -176,6 +184,10 @@ class CardService {
   }
   static newColumn() {
     return new Column();
+  }
+
+  static get WrapStyle() {
+    return WrapStyle
   }
 
   static get HorizontalAlignment() {

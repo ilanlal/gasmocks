@@ -1,9 +1,9 @@
-const Widget = require('./Widget');
+const BaseClass = require('../../helpers/BaseClass');
 const VerticalAlignment = require('../enums/VerticalAlignment');
 const HorizontalSizeStyle = require('../enums/HorizontalSizeStyle');
 const HorizontalAlignment = require('../enums/HorizontalAlignment');
 
-class Column extends Widget {
+class Column extends BaseClass {
     addWidget(widget) {
         if ((widget instanceof Widget) === false) {
             throw new Error('Invalid value passed for "addWidget"');
