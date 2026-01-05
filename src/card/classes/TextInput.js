@@ -2,7 +2,7 @@ const Widget = require('./Widget');
 const Action = require('./Action');
 const Suggestions = require('./Suggestions');
 const Validation = require('./Validation');
-
+const Visibility = require('../enums/Visibility');
 class TextInput extends Widget {
   setId(id) {
     this._data.id = id;
@@ -76,6 +76,14 @@ class TextInput extends Widget {
 
     this._data.validation = validation;
 
+    return this;
+  }
+
+  setVisibility(visibility) {
+    if (!Object.values(Visibility).includes(visibility)) {
+      throw new Error('Invalid visibility value');
+    }
+    this._data.visibility = visibility;
     return this;
   }
 
