@@ -30,7 +30,7 @@ const Grid = require('./classes/Grid')
 const GridItem = require('./classes/GridItem')
 const BorderStyle = require('./classes/BorderStyle')
 const Divider = require('./classes/Divider')
-
+const Column = require('./classes/Column')
 // enums
 const ComposeEmailType = require('./enums/ComposedEmailType')
 const Icon = require('./enums/Icon')
@@ -47,6 +47,9 @@ const Visibility = require('./enums/Visibility');
 const GridItemLayout = require('./enums/GridItemLayout');
 const BorderType = require('./enums/BorderType');
 const ImageButtonStyle = require('./enums/ImageButtonStyle');
+const HorizontalAlignment = require('./enums/HorizontalAlignment');
+const VerticalAlignment = require('./enums/VerticalAlignment');
+const HorizontalSizeStyle = require('./enums/HorizontalSizeStyle');
 class CardService {
   static newAction() {
     return new Action()
@@ -170,6 +173,21 @@ class CardService {
 
   static newDivider() {
     return new Divider();
+  }
+  static newColumn() {
+    return new Column();
+  }
+
+  static get HorizontalAlignment() {
+    return HorizontalAlignment
+  }
+
+  static get VerticalAlignment() {
+    return VerticalAlignment
+  }
+
+  static get HorizontalSizeStyle() {
+    return HorizontalSizeStyle
   }
 
   static get ComposeEmailType() {
