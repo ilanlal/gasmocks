@@ -4,6 +4,10 @@ const HorizontalSizeStyle = require('../enums/HorizontalSizeStyle');
 const HorizontalAlignment = require('../enums/HorizontalAlignment');
 
 class Column extends BaseClass {
+    constructor() {
+        super();
+        this._data.widget = null;
+    }
     addWidget(widget) {
         if ((widget instanceof Widget) === false) {
             throw new Error('Invalid value passed for "addWidget"');

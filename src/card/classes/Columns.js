@@ -7,6 +7,11 @@ const Visibility = require('../enums/Visibility');
 const WrapStyle = require('../enums/WrapStyle');
 
 class Columns extends Widget {
+    constructor() {
+        super();
+        this._data.columns = [];
+    }
+
     addColumn(column) {
         if ((column instanceof Column) === false) {
             throw new Error('Invalid value passed for "addColumn"');
