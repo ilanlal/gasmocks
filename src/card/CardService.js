@@ -53,6 +53,7 @@ const HorizontalAlignment = require('./enums/HorizontalAlignment');
 const VerticalAlignment = require('./enums/VerticalAlignment');
 const HorizontalSizeStyle = require('./enums/HorizontalSizeStyle');
 const WrapStyle = require('./enums/WrapStyle');
+const SwitchControlType = require('./enums/SwitchControlType');
 
 class CardService {
   static newColumns() {
@@ -184,6 +185,10 @@ class CardService {
   }
   static newColumn() {
     return new Column();
+  }
+
+  static get SwitchControlType() {
+    return SwitchControlType
   }
 
   static get WrapStyle() {

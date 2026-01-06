@@ -1,15 +1,19 @@
 const BaseClass = require('../../helpers/BaseClass');
 const Action = require('./Action');
+const SwitchControlType = require('../enums/SwitchControlType');
 /**
  * @see https://developers.google.com/apps-script/reference/card-service/switch
  */
 class Switch extends BaseClass {
     setControlType(controlType) {
+        if (!Object.values(SwitchControlType).includes(controlType)) {
+            throw new Error('Invalid control type');
+        }
         this._data.controlType = controlType;
         return this;
     }
 
-    setFieldName(name) {   
+    setFieldName(name) {
         this._data.fieldName = name;
         return this;
     }
