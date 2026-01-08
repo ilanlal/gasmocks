@@ -2,6 +2,7 @@ const Widget = require('./Widget');
 const Action = require('./Action');
 const Button = require('./Button');
 const Switch = require('./Switch');
+const OpenLink = require('./OpenLink');
 const IconImage = require('./IconImage');
 /**
  * @see https://developers.google.com/apps-script/reference/card-service/decorated-text
@@ -70,8 +71,8 @@ class DecoratedText extends Widget {
     }
 
     setOpenLink(openLink) {
-        if (typeof openLink !== 'string') {
-            throw new Error('Open link must be a string');
+        if (!(openLink instanceof OpenLink)) {
+            throw new Error('Open link must be an instance of OpenLink');
         }
         this._data.openLink = openLink;
         return this;
