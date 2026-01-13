@@ -114,6 +114,11 @@ class DecoratedText extends Widget {
         this._data.wrapText = wrapText;
         return this;
     }
+
+    setVisibility(visibility) {
+        this._data.visibility = visibility;
+        return this;
+    }
 }
 
 module.exports = DecoratedText;
