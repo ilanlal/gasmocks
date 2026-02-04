@@ -8,7 +8,7 @@ class RangeStubConfiguration {
     }
 
     activate() {
-        this._sheet.setActiveRange(this)
+        return this._sheet.setActiveRange(this)
     }
 
     createTextFinder(findText) {
@@ -22,7 +22,7 @@ class RangeStubConfiguration {
                 for (let r = 0; r < values.length; r++) {
                     for (let c = 0; c < values[r].length; c++) {
                         if (values[r][c] === findText) {
-                            return new RangeStubConfiguration()
+                            return this
                                 .setA1Notation(`${String.fromCharCode(65 + c)}${r + 1}`)
                                 .setValue(values[r][c]);
                         }
