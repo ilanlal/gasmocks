@@ -20,7 +20,9 @@ describe('Range', () => {
     });
 
     it('Should get a specific cell from the range', () => {
-        const cell = Range.getCell(0, 0);
+        // First, set some values to ensure the cell exists
+        Range.setValues([[10, 20], [30, 40]]);
+        const cell = Range.getCell(1, 1);
         expect(cell.getA1Notation()).toBe('A1');
     });
 

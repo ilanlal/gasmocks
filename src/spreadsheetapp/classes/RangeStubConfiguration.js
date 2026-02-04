@@ -39,9 +39,14 @@ class RangeStubConfiguration {
     }
 
     getCell(row, column) {
+        const values = this.getValues();
+        if (row < 1 || column < 1 || row > values.length || column > values[0].length) {
+            throw new Error('Cell out of range');
+        }
+        const cellValue = values[row - 1][column - 1];
         return new RangeStubConfiguration()
-            .setA1Notation(`${String.fromCharCode(65 + column)}${row + 1}`)
-            .setValue(this._values[row][column])
+            .setA1Notation(`${String.fromCharCode(65 + column - 1)}${row}`)
+            .setValue(cellValue);
     }
 
     getHorizontalAlignment() {

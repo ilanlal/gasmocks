@@ -24,7 +24,9 @@ describe('RangeStubConfiguration', () => {
     });
 
     it('Should get a specific cell from the range', () => {
-        const cell = RangeStubConfiguration.getCell(0, 0);
+        // First, set some values to ensure the cell exists
+        RangeStubConfiguration.setValues([[10, 20], [30, 40]]);
+        const cell = RangeStubConfiguration.getCell(1, 1);
         expect(cell.getA1Notation()).toBe('A1');
     });
 
