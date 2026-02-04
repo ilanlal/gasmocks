@@ -32,11 +32,11 @@ class SheetStubConfiguration {
     }
 
     getActiveCell() {
-        return this._activeCell
+        return this._activeCell;
     }
 
     getActiveRange() {
-        return this._selection
+        return this._activeCell;
     }
 
     getCurrentCell() {
@@ -44,41 +44,41 @@ class SheetStubConfiguration {
     }
 
     getDataRange() {
-        return this._range
+        return this._range;
     }
 
     getLastColumn() {
-        return this._range.getLastColumn()
+        return this._range.getLastColumn();
     }
 
     getLastRow() {
-        return this._range.getLastRow()
+        return this._range.getLastRow();
     }
 
     getName() {
-        return this._name
+        return this._name;
     }
 
     getParent() {
-        return this._parent
+        return this._parent;
     }
 
     getRange(a1Notation) {
-        this._range = RangeStubConfiguration.setA1Notation(a1Notation)
-        return this._range
+        this._range = RangeStubConfiguration.setA1Notation(a1Notation);
+        return this._range;
     }
 
     getSelection() {
-        return this._selection
+        return this._selection;
     }
 
     getSheetName() {
-        return this._name
+        return this._name;
     }
 
     setActiveRange(range = RangeStubConfiguration) {
-        this._selection = range
-        return this._selection
+        this._activeCell = range;
+        return this._activeCell;
     }
 
     setActiveSelection(selection = null) {
