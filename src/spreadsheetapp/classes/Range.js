@@ -25,6 +25,14 @@ class Range {
     return RangeStubConfiguration.getLastColumn();
   }
 
+  static getNumColumns() {
+    return RangeStubConfiguration.getNumColumns();
+  }
+
+  static getNumRows() {
+    return RangeStubConfiguration.getNumRows();
+  }
+
   static getLastRow() {
     return RangeStubConfiguration.getLastRow();
   }

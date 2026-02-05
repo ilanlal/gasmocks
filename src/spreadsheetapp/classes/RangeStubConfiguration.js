@@ -1,4 +1,4 @@
-const SheetStubConfiguration = require('./SheetStubConfiguration')
+const SheetStubConfiguration = require('./SheetStubConfiguration');
 
 class RangeStubConfiguration {
     constructor() {
@@ -8,7 +8,7 @@ class RangeStubConfiguration {
     }
 
     activate() {
-        return this._sheet.setActiveRange(this)
+        return this._sheet.setActiveRange(this);
     }
 
     createTextFinder(findText) {
@@ -35,7 +35,7 @@ class RangeStubConfiguration {
     }
 
     getA1Notation() {
-        return this._a1Notation
+        return this._a1Notation;
     }
 
     getCell(row, column) {
@@ -48,39 +48,47 @@ class RangeStubConfiguration {
     }
 
     getHorizontalAlignment() {
-        return this._horizontalAlignment
+        return this._horizontalAlignment;
     }
 
     getLastColumn() {
-        return this._values[0].length
+        return this._values[0].length;
+    }
+
+    getNumColumns() {
+        return this._values[0].length;
+    }
+
+    getNumRows() {
+        return this._values.length;
     }
 
     getLastRow() {
         if (this._values[0][0] === null || this._values[0][0] === undefined) {
-            return 0
+            return 0;
         }
-        return this._values.length
+        return this._values.length;
     }
 
     getSheet() {
-        return this._sheet
+        return this._sheet;
     }
 
     getValue() {
-        return this._values[0][0]
+        return this._values[0][0];
     }
 
     getValues() {
-        return this._values
+        return this._values;
     }
 
     getVerticalAlignment() {
-        return this._verticalAlignment
+        return this._verticalAlignment;
     }
 
     setA1Notation(a1Notation) {
-        this._a1Notation = a1Notation
-        return this
+        this._a1Notation = a1Notation;
+        return this;
     }
 
     setHorizontalAlignment(value) {
