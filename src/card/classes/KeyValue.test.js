@@ -26,7 +26,7 @@ describe('KeyValue', () => {
 
   it('Should throw an exception on set button', () => {
     expect(new KeyValue().setButton)
-      .toThrowError('Invalid value passed for "setButton"')
+      .toThrow('Invalid value passed for "setButton"')
   })
 
   it('Should set content', () => {
@@ -73,7 +73,7 @@ describe('KeyValue', () => {
 
   it('Should throw an exception on set onClickAction', () => {
     expect(new KeyValue().setOnClickAction)
-      .toThrowError('Invalid value passed for "setOnClickAction"')
+      .toThrow('Invalid value passed for "setOnClickAction"')
   })
 
   it('Should set openLink', () => {
@@ -88,7 +88,7 @@ describe('KeyValue', () => {
 
   it('Should throw an exception on set openLink', () => {
     expect(new KeyValue().setOpenLink)
-      .toThrowError('Invalid value passed for "setOpenLink"')
+      .toThrow('Invalid value passed for "setOpenLink"')
   })
 
   it('Should set top label', () => {

@@ -23,12 +23,12 @@ describe('CardAction', () => {
 
   it('Should throw an exception on set openLink', () => {
     expect(new CardAction().setOpenLink)
-      .toThrowError('Invalid value passed for "setOpenLink"')
+      .toThrow('Invalid value passed for "setOpenLink"')
   })
 
   it('Should throw an exception when try to call setOnClickAction without an action', () => {
     expect(new CardAction().setOnClickAction)
-    .toThrowError('Invalid value passed for "setOnClickAction"')
+    .toThrow('Invalid value passed for "setOnClickAction"')
   })
 
   it('Should set the on click action', () => {

@@ -13,7 +13,7 @@ describe('Button', () => {
 
   it('Should throw an exception on set onClickAction', () => {
     expect(new Button().setOnClickAction)
-      .toThrowError('Invalid value passed for "setOnClickAction"')
+      .toThrow('Invalid value passed for "setOnClickAction"')
   })
 
   it('Should set openLink', () => {
@@ -26,6 +26,6 @@ describe('Button', () => {
 
   it('Should throw an exception on set openLink', () => {
     expect(new Button().setOpenLink)
-      .toThrowError('Invalid value passed for "setOpenLink"')
+      .toThrow('Invalid value passed for "setOpenLink"')
   })
 })

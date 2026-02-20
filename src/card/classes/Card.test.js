@@ -27,7 +27,7 @@ describe('Card', () => {
 
   it('Should throw an exception on set the header', () => {
     expect(new Card().setHeader)
-      .toThrowError('Invalid value passed for "setHeader"')
+      .toThrow('Invalid value passed for "setHeader"')
   })
 
   it('Should set the section', () => {
@@ -46,7 +46,7 @@ describe('Card', () => {
 
   it('Should throw an exception on set the section', () => {
     expect(new Card().addSection)
-      .toThrowError('Invalid value passed for "addSection"')
+      .toThrow('Invalid value passed for "addSection"')
   })
 
   it('Should set the card action', () => {
@@ -75,6 +75,6 @@ describe('Card', () => {
 
   it('Should throw an exception on set the fixed footer', () => {
     expect(new Card().setFixedFooter)
-      .toThrowError('Invalid value passed for "setFixedFooter"')
+      .toThrow('Invalid value passed for "setFixedFooter"')
   })
 })

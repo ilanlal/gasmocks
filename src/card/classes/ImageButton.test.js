@@ -20,6 +20,6 @@ describe('ImageButton', () => {
 
   it('Should throw an exception on set open link', () => {
     expect(new ImageButton().setOpenLink)
-      .toThrowError('Invalid value passed for "setOpenLink"')
+      .toThrow('Invalid value passed for "setOpenLink"')
   })
 })

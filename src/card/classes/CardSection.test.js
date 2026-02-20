@@ -23,7 +23,7 @@ describe('CardSection', () => {
 
   it('Should throw an exception on add widget', () => {
     expect(new CardSection().addWidget)
-      .toThrowError('Invalid value passed for "addWidget"')
+      .toThrow('Invalid value passed for "addWidget"')
   })
 
   it('Should set collapsible', () => {
