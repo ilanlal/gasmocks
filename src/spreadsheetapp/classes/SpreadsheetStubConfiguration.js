@@ -50,10 +50,16 @@ class SpreadsheetStubConfiguration {
 
   setLocale(locale) {
     this._locale = locale
+    return this;
   }
 
   setTimeZone(timezone) {
     this._timezone = timezone
+    return this;
+  }
+  
+  toast(message, title, timeout) {
+    return { message, title, timeout }
   }
 
   reset() {

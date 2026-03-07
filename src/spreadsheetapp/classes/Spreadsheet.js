@@ -40,6 +40,10 @@ class Spreadsheet {
   static setSpreadsheetLocale(locale) {
     return SpreadsheetStubConfiguration.setLocale(locale)
   }
+
+  static toast(message, title, timeout) {
+    return SpreadsheetStubConfiguration.toast(message, title, timeout)
+  }
 }
 
 module.exports = Spreadsheet
