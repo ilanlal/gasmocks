@@ -76,7 +76,7 @@ class RangeStubConfiguration {
             throw new Error('No data available');
         }
         const rowValues = values[0];
-        return this.setA1Notation(`${String.fromCharCode(64 + column)}${row}`).setValue(rowValues);
+        return this.setA1Notation(`A1:${String.fromCharCode(64 + rowValues.length)}1`).setValues([rowValues]);
     }
 
     getSheet() {
