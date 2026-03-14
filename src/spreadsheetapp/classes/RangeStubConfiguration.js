@@ -70,6 +70,10 @@ class RangeStubConfiguration {
         return this._values.length;
     }
 
+    getRow() {
+        return parseInt(this._a1Notation.match(/\d+/)[0], 10);
+    }
+
     getSheet() {
         return this._sheet;
     }

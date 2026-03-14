@@ -37,6 +37,11 @@ class Range {
     return RangeStubConfiguration.getLastRow();
   }
 
+  static getRow() {
+    return RangeStubConfiguration.getRow();
+  }
+
+
   static getSheet() {
     return RangeStubConfiguration.getSheet();
   }
