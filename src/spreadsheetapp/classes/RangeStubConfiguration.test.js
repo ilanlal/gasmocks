@@ -35,4 +35,11 @@ describe('RangeStubConfiguration', () => {
         expect(textFinder).toBeDefined();
         expect(textFinder.findText).toBe('test');
     });
+
+    // getRow test
+    it('Should get the row number of the range', () => {
+        RangeStubConfiguration.setA1Notation('B2');
+        const row = RangeStubConfiguration.getRow();
+        expect(row).toBe(2);
+    });
 });

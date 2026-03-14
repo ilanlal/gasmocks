@@ -70,8 +70,13 @@ class RangeStubConfiguration {
         return this._values.length;
     }
 
+    /**
+     * Returns the row position for this range. Identical to getRowIndex().
+     */
     getRow() {
-        return parseInt(this._a1Notation.match(/\d+/)[0], 10);
+        const a1Notation = this.getA1Notation();
+        const match = a1Notation.match(/(\d+)$/);
+        return match ? parseInt(match[1], 10) : null;
     }
 
     getSheet() {
