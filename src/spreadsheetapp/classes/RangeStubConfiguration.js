@@ -71,12 +71,7 @@ class RangeStubConfiguration {
     }
 
     getRow() {
-        const values = this.getValues();
-        if (values.length === 0 || values[0].length === 0) {
-            throw new Error('No data available');
-        }
-        const rowValues = values[0];
-        return this.setA1Notation(`A1:${String.fromCharCode(64 + rowValues.length)}1`).setValues([rowValues]);
+        return parseInt(this._a1Notation.match(/\d+/)[0], 10);
     }
 
     getSheet() {
