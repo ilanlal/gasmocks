@@ -75,7 +75,7 @@ class RangeStubConfiguration {
      */
     getRow() {
         const a1Notation = this.getA1Notation();
-        const match = a1Notation?.match(/(\d+)$/);
+        const match = /(\d+)$/.exec(a1Notation);
         return match ? parseInt(match[1], 10) : null;
     }
 
