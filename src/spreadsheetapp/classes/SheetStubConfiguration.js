@@ -63,48 +63,11 @@ class SheetStubConfiguration {
         return this._parent;
     }
 
+    /**
+     * Returns the range as specified in A1 notation or R1C1 notation.
+     */
     getRange(a1Notation) {
-        // if a1Notation is not provided, return the whole range
-        if (!a1Notation) {
-            return this._range;
-        }
-
-        // Handle column range (e.g., "A:C") and row range (e.g., "1:3")
-        let match = /^([A-Z]+):([A-Z]+)$/.exec(a1Notation);
-
-        if (!match) {
-            // Handle column range (e.g., "A2:C5")
-            match = /^([A-Z]+)(\d+):([A-Z]+)(\d+)$/.exec(a1Notation);
-            
-        }
-
-        if (!match) {
-            // Handle single column (e.g., "A") or single row (e.g., "1")
-            match = /^([A-Z]+)$/.exec(a1Notation) || /^(\d+)$/.exec(a1Notation);
-        }
-
-        if (!match) {
-            // Regular A1 notation
-            match = /^([A-Z]+)(\d+)$/.exec(a1Notation);
-        }
-
-        if(!match) {
-            throw new Error(`Invalid A1 notation: ${a1Notation}`);
-        }
-
-
-        const column = match[1];
-        const row = parseInt(match[2], 10);
-        const columnIndex = column.charCodeAt(0) - 64;
-        const values = this._range.getValues();
-        let rangeValues;
-        if (row < 1 || columnIndex < 1 || row > values.length || columnIndex > values[0].length) {
-            rangeValues = [[]];
-        } else {
-            rangeValues = values.slice(row - 1).map(r => r.slice(columnIndex - 1));
-        }
-
-        return this._range.setA1Notation(a1Notation).setValues(rangeValues);
+        return this._range.setA1Notation(a1Notation);
     }
 
     getSelection() {

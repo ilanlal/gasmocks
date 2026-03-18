@@ -52,19 +52,28 @@ class RangeStubConfiguration {
     }
 
     getLastColumn() {
+        if (this._values.length === 0 || this._values[0].length === 0) {
+            return 0;
+        }
         return this._values[0].length;
     }
 
     getNumColumns() {
+        if (this._values.length === 0 || this._values[0].length === 0) {
+            return 0;
+        }
         return this._values[0].length;
     }
 
     getNumRows() {
+        if (this._values.length === 0 || this._values[0].length === 0) {
+            return 0;
+        }
         return this._values.length;
     }
 
     getLastRow() {
-        if (this._values[0][0] === null || this._values[0][0] === undefined) {
+        if (this._values.length === 0 || this._values[0].length === 0) {
             return 0;
         }
         return this._values.length;
@@ -74,9 +83,11 @@ class RangeStubConfiguration {
      * Returns the row position for this range. Identical to getRowIndex().
      */
     getRow() {
-        const a1Notation = this.getA1Notation();
-        const match = /(\d+)$/.exec(a1Notation);
-        return match ? parseInt(match[1], 10) : null;
+        if (this._a1Notation) {
+            const match = this._a1Notation.match(/\d+/);
+            return match ? parseInt(match[0], 10) : null;
+        }
+        return null;
     }
 
     getSheet() {
@@ -84,6 +95,10 @@ class RangeStubConfiguration {
     }
 
     getValue() {
+        if (this._values.length === 0 || this._values[0].length === 0) {
+            return null;
+        }
+        // Return the value of the top-left cell in the range
         return this._values[0][0];
     }
 
@@ -96,7 +111,9 @@ class RangeStubConfiguration {
     }
 
     setA1Notation(a1Notation) {
+        // Set the A1 notation and update the internal state accordingly
         this._a1Notation = a1Notation;
+        // In a real implementation, you would also update the values and other properties based on the new A1 notation
         return this;
     }
 
@@ -111,6 +128,7 @@ class RangeStubConfiguration {
     }
 
     setValue(value) {
+        // Set the value of the top-left cell in the range
         this._values[0][0] = value;
         return this;
     }

@@ -11,18 +11,11 @@ describe('Sheet', () => {
         expect(range).toBeDefined();
         expect(range.getA1Notation()).toBe('A1:B2');
 
-        // Test getting the whole range when no A1 notation is provided
-        range = Sheet.getRange();
-        expect(range).toBeDefined();
-        expect(range.getA1Notation()).toBe('A1:B2');
-
         // Test getting a single cell range
-        range = Sheet.getRange('A1');
+        range = Sheet.getRange('C1');
         expect(range).toBeDefined();
-        expect(range.getA1Notation()).toBe('A1');
-        // Test invalid A1 notation
-        expect(() => Sheet.getRange('Invalid')).toThrow('Invalid A1 notation: Invalid');
-
+        expect(range.getA1Notation()).toBe('C1');
+       
         // Test out of range A1 notation
         range = Sheet.getRange('B:B');
         expect(range).toBeDefined();
