@@ -40,12 +40,12 @@ class SpreadsheetStubConfiguration {
   /** @returns SheetStubConfiguration */
   setActiveSheet(sheet) {
     this._activeSheet = sheet
-    return this._activeSheet
+    return this;
   }
 
   setCurrentCell(cell) {
     this._activeSheet.setCurrentCell(cell)
-    return this._activeSheet.getCurrentCell()
+    return this;
   }
 
   setLocale(locale) {

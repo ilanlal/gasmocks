@@ -64,8 +64,28 @@ class SheetStubConfiguration {
     }
 
     getRange(a1Notation) {
-        this._range = RangeStubConfiguration.setA1Notation(a1Notation);
-        return this._range;
+        // if a1Notation is not provided, return the whole range
+        if (!a1Notation) {
+            return this._range;
+        }
+
+        // return new 2D range with the provided a1Notation and values match to the provided a1Notation
+        const match = /([A-Z]+)(\d+)/.exec(a1Notation);
+        if (!match) {
+            throw new Error(`Invalid A1 notation: ${a1Notation}`);
+        }
+        const column = match[1];
+        const row = parseInt(match[2], 10);
+        const columnIndex = column.charCodeAt(0) - 64;
+        const values = this._range.getValues();
+        let rangeValues;
+        if (row < 1 || columnIndex < 1 || row > values.length || columnIndex > values[0].length) {
+            rangeValues = [[]];
+        } else {
+            rangeValues = values.slice(row - 1).map(r => r.slice(columnIndex - 1));
+        }
+        
+        return this._range.setA1Notation(a1Notation).setValues(rangeValues);
     }
 
     getSelection() {
