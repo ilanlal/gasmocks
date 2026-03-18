@@ -78,7 +78,7 @@ class SheetStubConfiguration {
 
     setActiveRange(range = RangeStubConfiguration) {
         this._activeCell = range;
-        return this._activeCell;
+        return this;
     }
 
     setActiveSelection(selection = null) {
@@ -88,12 +88,12 @@ class SheetStubConfiguration {
         } else {
             this._selection = selection
         }
-        return this._selection
+        return this;
     }
 
     setCurrentCell(cell = null) {
         this._currentCell = cell
-        return this._currentCell
+        return this;
     }
 
     setName(name) {
