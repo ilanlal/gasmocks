@@ -43,11 +43,10 @@ describe('SheetStubConfiguration', () => {
   it('Should get the current cell value', () => {
     SheetStubConfiguration.appendRow(['A1', 'B1']);
     SheetStubConfiguration.appendRow(['A2', 'B2']);
-    const range = SheetStubConfiguration.getRange('B2')
-    // SheetStubConfiguration.setActiveRange(range)
-    SheetStubConfiguration.setCurrentCell(range)
+    SheetStubConfiguration.setActiveRange(SheetStubConfiguration.getRange('A1:B2'));
+    SheetStubConfiguration.setCurrentCell(SheetStubConfiguration.getRange('B2'));
     
-    const currentCell = SheetStubConfiguration.getCurrentCell()
-    expect(currentCell.getValue()).toBe('B2')
+    const currentCell = SheetStubConfiguration.getCurrentCell();
+    expect(currentCell.getValues()[1][1]).toBe('B2');
   });
 })

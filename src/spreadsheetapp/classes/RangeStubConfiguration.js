@@ -98,7 +98,7 @@ class RangeStubConfiguration {
         if (this._values.length === 0 || this._values[0].length === 0) {
             return null;
         }
-        // Return the value of the top-left cell in the range
+        // Returns the value of the top-left cell in the range.
         return this._values[0][0];
     }
 

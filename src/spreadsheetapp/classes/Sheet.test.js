@@ -48,7 +48,7 @@ describe('Sheet', () => {
     it('should get data range', () => {
         Sheet.appendRow(['A1', 'B1']);
         Sheet.appendRow(['A2', 'B2']);
-
+        Sheet.setActiveRange(Sheet.getRange('A1:B2'));
         expect(Sheet.getRange('A1:B2').getValues()).toEqual([['A1', 'B1'], ['A2', 'B2']]);
     });
 
