@@ -9,7 +9,8 @@ class SheetStubConfiguration {
         this._range = RangeStubConfiguration;
         this._activeCell = RangeStubConfiguration;
         /** @type {RangeStubConfiguration | null} */
-        this._currentCell = RangeStubConfiguration;        /** @type {RangeStubConfiguration | null} */
+        this._currentCell = RangeStubConfiguration;
+        /** @type {RangeStubConfiguration | null} */
         this._selection = null;
     }
 
