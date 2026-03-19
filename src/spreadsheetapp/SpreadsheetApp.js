@@ -1,6 +1,6 @@
 const Spreadsheet = require('./classes/Spreadsheet')
 
-class SpreadSheetApp {
+class SpreadsheetApp {
   static getActiveSpreadsheet() {
     return Spreadsheet;
   }
@@ -21,4 +21,4 @@ class SpreadSheetApp {
   }
 }
 
-module.exports = SpreadSheetApp;
+module.exports = SpreadsheetApp;

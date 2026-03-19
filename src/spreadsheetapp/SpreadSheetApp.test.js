@@ -1,8 +1,8 @@
 const Spreadsheet = require('./classes/Spreadsheet')
-const SpreadSheetApp = require('./SpreadsheetApp')
+const SpreadsheetApp = require('./SpreadsheetApp')
 
-describe('SpreadSheetApp', () => {
+describe('SpreadsheetApp', () => {
   it('Should return Spreadsheet', () => {
-    expect(SpreadSheetApp.getActiveSpreadsheet()).toBe(Spreadsheet)
+    expect(SpreadsheetApp.getActiveSpreadsheet()).toBe(Spreadsheet)
   })
 })
