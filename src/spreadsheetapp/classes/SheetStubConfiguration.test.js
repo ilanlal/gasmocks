@@ -38,4 +38,16 @@ describe('SheetStubConfiguration', () => {
     SheetStubConfiguration.clear()
     expect(SheetStubConfiguration.getLastRow()).toBe(0) // Only header row remains
   });
+
+  // getCurrentCell
+  it('Should get the current cell value', () => {
+    SheetStubConfiguration.appendRow(['A1', 'B1']);
+    SheetStubConfiguration.appendRow(['A2', 'B2']);
+    const range = SheetStubConfiguration.getRange('B2')
+    // SheetStubConfiguration.setActiveRange(range)
+    SheetStubConfiguration.setCurrentCell(range)
+    
+    const currentCell = SheetStubConfiguration.getCurrentCell()
+    expect(currentCell.getValue()).toBe('B2')
+  });
 })

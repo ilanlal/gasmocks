@@ -9,9 +9,7 @@ class SheetStubConfiguration {
         this._range = RangeStubConfiguration
         this._activeCell = RangeStubConfiguration
         /** @type {RangeStubConfiguration | null} */
-        this._currentCell = null
-        /** @type {RangeStubConfiguration | null} */
-        this._selection = null
+        this._currentCell = RangeStubConfiguration
     }
 
     appendRow(rowContents) {
@@ -35,12 +33,16 @@ class SheetStubConfiguration {
         return this._activeCell;
     }
 
+    /**
+     * Returns a Range corresponding to the dimensions in which data is present.
+     */
     getActiveRange() {
-        return this._activeCell;
+        // For simplicity, we return the entire range. In a real implementation, this would return the actual active range.
+        return this._range;
     }
 
     getCurrentCell() {
-        return this._currentCell
+        return this._currentCell;
     }
 
     getDataRange() {
@@ -70,10 +72,6 @@ class SheetStubConfiguration {
         return this._range.setA1Notation(a1Notation);
     }
 
-    getSelection() {
-        return this._selection;
-    }
-
     getSheetName() {
         return this._name;
     }
@@ -83,18 +81,12 @@ class SheetStubConfiguration {
         return this;
     }
 
-    setActiveSelection(selection = null) {
-        // if selection is string
-        if (typeof selection === 'string') {
-            this._selection = RangeStubConfiguration.setA1Notation(selection)
-        } else {
-            this._selection = selection
-        }
-        return this;
-    }
-
-    setCurrentCell(cell = null) {
-        this._currentCell = cell
+    setCurrentCell(cell = RangeStubConfiguration) {
+        this._currentCell = RangeStubConfiguration.setA1Notation(cell.getA1Notation());
+        // Set value of the current cell to match the values[column]
+        const col = this._activeCell.getA1Notation().match(/[A-Z]+/)[0].charCodeAt(0) - 'A'.charCodeAt(0);
+        const row = this._activeCell.getA1Notation().match(/[0-9]+/)[0] - 1;
+        this._currentCell.setValue(this._activeCell.getValues()[row][col]);
         return this;
     }
 
@@ -109,7 +101,6 @@ class SheetStubConfiguration {
         this._range = RangeStubConfiguration
         this._activeCell = RangeStubConfiguration
         this._currentCell = null
-        this._selection = null
         RangeStubConfiguration.reset()
     }
 }
