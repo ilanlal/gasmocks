@@ -98,11 +98,7 @@ class SheetStubConfiguration {
     }
 
     setCurrentCell(cell = RangeStubConfiguration) {
-        this._currentCell = RangeStubConfiguration.setA1Notation(cell.getA1Notation());
-        // Set value of the current cell to match the values[column]
-        const col = this._currentCell.getA1Notation().match(/[A-Z]+/)[0].charCodeAt(0) - 'A'.charCodeAt(0);
-        const row = this._currentCell.getA1Notation().match(/[0-9]+/)[0] - 1;
-        this._currentCell.setValue(this._currentCell.getValue());
+        this._currentCell = cell;
         return this;
     }
 
