@@ -15,7 +15,7 @@ describe('Sheet', () => {
         range = Sheet.getRange('C1');
         expect(range).toBeDefined();
         expect(range.getA1Notation()).toBe('C1');
-       
+
         // Test out of range A1 notation
         range = Sheet.getRange('B:B');
         expect(range).toBeDefined();
@@ -64,5 +64,13 @@ describe('Sheet', () => {
 
     it('should get current cell', () => {
         expect(Sheet.getCurrentCell()).toBeDefined();
+    });
+
+    it('should set and get selection', () => {
+        let range = Sheet.getRange('A1:B2');
+        Sheet.setActiveSelection(range);
+        expect(Sheet.getSelection()).toBe(range);
+        Sheet.setActiveSelection('A1');
+        expect(Sheet.getSelection().getA1Notation()).toBe('A1');
     });
 });

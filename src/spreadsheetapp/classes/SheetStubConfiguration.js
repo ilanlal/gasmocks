@@ -4,12 +4,13 @@ const SpreadsheetStubConfiguration = require('./SpreadsheetStubConfiguration')
 
 class SheetStubConfiguration {
     constructor() {
-        this._name = 'Sheet1'
-        this._parent = SpreadsheetStubConfiguration
-        this._range = RangeStubConfiguration
-        this._activeCell = RangeStubConfiguration
+        this._name = 'Sheet1';
+        this._parent = SpreadsheetStubConfiguration;
+        this._range = RangeStubConfiguration;
+        this._activeCell = RangeStubConfiguration;
         /** @type {RangeStubConfiguration | null} */
-        this._currentCell = RangeStubConfiguration
+        this._currentCell = RangeStubConfiguration;        /** @type {RangeStubConfiguration | null} */
+        this._selection = null;
     }
 
     appendRow(rowContents) {
@@ -72,12 +73,26 @@ class SheetStubConfiguration {
         return this._range.setA1Notation(a1Notation);
     }
 
+    getSelection() {
+        return this._selection;
+    }
+
     getSheetName() {
         return this._name;
     }
 
     setActiveRange(range = RangeStubConfiguration) {
         this._activeCell = range;
+        return this;
+    }
+
+    setActiveSelection(selection = null) {
+        // if selection is string
+        if (typeof selection === 'string') {
+            this._selection = RangeStubConfiguration.setA1Notation(selection)
+        } else {
+            this._selection = selection
+        }
         return this;
     }
 
@@ -100,7 +115,8 @@ class SheetStubConfiguration {
         this._parent = SpreadsheetStubConfiguration
         this._range = RangeStubConfiguration
         this._activeCell = RangeStubConfiguration
-        this._currentCell = null
+        this._currentCell = null;
+        this._selection = null;
         RangeStubConfiguration.reset()
     }
 }
