@@ -52,20 +52,20 @@ class RangeStubConfiguration {
             },
             findPrevious: () => {
                 const values = this.getValues();
-                
+
                 // reset the _currentMatchRowIndex and _currentMatchColumnIndex to the end of the range if they are out of bounds
                 if (this._currentMatchRowIndex < 1 || this._currentMatchColumnIndex < 1) {
                     this._currentMatchRowIndex = values.length;
                     this._currentMatchColumnIndex = values[values.length - 1].length;
                 }
-                
+
                 // Search backwards from the current position
                 for (let row = this._currentMatchRowIndex - 1; row >= 0; row--) {
                     for (let col = this._currentMatchColumnIndex - 1; col >= 0; col--) {
                         if (values[row][col] === findText) {
                             this._currentMatchRowIndex = row + 1; // Update the current row index for the next search
                             this._currentMatchColumnIndex = col + 1; // Update the current column index for the next search
-                            return this.getCell(this._currentMatchRowIndex, this._currentMatchColumnIndex);
+                            return this.getCell(this._currentMatchRowIndex - 1, this._currentMatchColumnIndex - 1);
                         }
                     }
                     this._currentMatchColumnIndex = values[row].length; // Reset column index to the end of the previous row
