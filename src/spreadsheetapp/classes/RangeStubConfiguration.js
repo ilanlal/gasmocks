@@ -30,7 +30,35 @@ class RangeStubConfiguration {
                 }
 
                 return null; // No match found
+            },
+            findAll: () => {
+                const values = this.getValues();
+                const matches = [];
+                for (let r = 0; r < values.length; r++) {
+                    for (let c = 0; c < values[r].length; c++) {
+                        if (values[r][c] === findText) {
+                            matches.push(this
+                                .setA1Notation(`${String.fromCharCode(65 + c)}${r + 1}`)
+                                .setValue(values[r][c]));
+                        }
+                    }
+                }
+                return matches;
+            },
+            findPrevious: () => {
+                const values = this.getValues();
+                for (let r = values.length - 1; r >= 0; r--) {
+                    for (let c = values[r].length - 1; c >= 0; c--) {
+                        if (values[r][c] === findText) {
+                            return this
+                                .setA1Notation(`${String.fromCharCode(65 + c)}${r + 1}`)
+                                .setValue(values[r][c]);
+                        }
+                    }
+                }
+                return null; // No match found
             }
+
         };
     }
 
