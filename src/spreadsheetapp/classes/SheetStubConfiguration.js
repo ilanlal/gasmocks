@@ -71,16 +71,13 @@ class SheetStubConfiguration {
      * Returns the range as specified in A1 notation or R1C1 notation.
      */
     getRange(row, column, numRows, numColumns) {
+        // For simplicity, we return the entire range. In a real implementation, this would return the specified range.
         if (typeof row === 'string') {
-            // If the first argument is a string, treat it as A1 notation
-            return this._range.setA1Notation(row)
-                .setValues(this._range.getValues());
+            this._range.setA1Notation(row);
+        } else {
+            this._range.setA1Notation(`${String.fromCharCode(64 + column)}${row}:${String.fromCharCode(64 + column + numColumns - 1)}${row + numRows - 1}`);
         }
-        
-        // Otherwise, treat the arguments as row, column, numRows, numColumns
-        const a1Notation = `${String.fromCharCode(64 + column)}${row}:${String.fromCharCode(64 + column + numColumns - 1)}${row + numRows - 1}`;
-        return this._range.setA1Notation(a1Notation)
-            .setValues(this._range.getValues());
+        return this._range;
     }
 
     getSelection() {
