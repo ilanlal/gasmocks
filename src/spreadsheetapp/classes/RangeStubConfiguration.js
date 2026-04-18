@@ -5,6 +5,8 @@ class RangeStubConfiguration {
         this._sheet = SheetStubConfiguration;
         this._a1Notation = 'A1';
         this._values = [[]];
+        this._currentMatchRowIndex = 0;
+        this._currentMatchColumnIndex = 0;
     }
 
     activate() {
@@ -16,30 +18,33 @@ class RangeStubConfiguration {
         // This is a stub method and should be customized as needed
         return {
             findText: findText,
+            getCurrentMatch: () => {
+                if (this._currentMatchRowIndex > 0 && this._currentMatchColumnIndex > 0) {
+                    return this.getCell(this._currentMatchRowIndex, this._currentMatchColumnIndex);
+                }
+                return null; // No current match
+            },
             findNext: () => {
                 const values = this.getValues();
-
-                for (let r = 0; r < values.length; r++) {
-                    for (let c = 0; c < values[r].length; c++) {
-                        if (values[r][c] === findText) {
-                            return this
-                                .setA1Notation(`${String.fromCharCode(65 + c)}${r + 1}`)
-                                .setValue(values[r][c]);
+                for (let row = this._currentMatchRowIndex; row < values.length; row++) {
+                    for (let col = this._currentMatchColumnIndex; col < values[row].length; col++) {
+                        if (values[row][col] === findText) {
+                            this._currentMatchRowIndex = row + 1; // Update the current row index for the next search
+                            this._currentMatchColumnIndex = col + 1; // Update the current column index for the next search
+                            return this.getCell(this._currentMatchRowIndex, this._currentMatchColumnIndex);
                         }
                     }
+                    this._currentMatchColumnIndex = 0; // Reset column index to the start of the next row
                 }
-
                 return null; // No match found
             },
             findAll: () => {
-                const values = this.getValues();
                 const matches = [];
-                for (let r = 0; r < values.length; r++) {
-                    for (let c = 0; c < values[r].length; c++) {
-                        if (values[r][c] === findText) {
-                            matches.push(this
-                                .setA1Notation(`${String.fromCharCode(65 + c)}${r + 1}`)
-                                .setValue(values[r][c]));
+                const values = this.getValues();
+                for (let row = 0; row < values.length; row++) {
+                    for (let col = 0; col < values[row].length; col++) {
+                        if (values[row][col] === findText) {
+                            matches.push(this.getCell(row + 1, col + 1));
                         }
                     }
                 }
@@ -47,14 +52,23 @@ class RangeStubConfiguration {
             },
             findPrevious: () => {
                 const values = this.getValues();
-                for (let r = values.length - 1; r >= 0; r--) {
-                    for (let c = values[r].length - 1; c >= 0; c--) {
-                        if (values[r][c] === findText) {
-                            return this
-                                .setA1Notation(`${String.fromCharCode(65 + c)}${r + 1}`)
-                                .setValue(values[r][c]);
+                
+                // reset the _currentMatchRowIndex and _currentMatchColumnIndex to the end of the range if they are out of bounds
+                if (this._currentMatchRowIndex < 1 || this._currentMatchColumnIndex < 1) {
+                    this._currentMatchRowIndex = values.length;
+                    this._currentMatchColumnIndex = values[values.length - 1].length;
+                }
+                
+                // Search backwards from the current position
+                for (let row = this._currentMatchRowIndex - 1; row >= 0; row--) {
+                    for (let col = this._currentMatchColumnIndex - 1; col >= 0; col--) {
+                        if (values[row][col] === findText) {
+                            this._currentMatchRowIndex = row + 1; // Update the current row index for the next search
+                            this._currentMatchColumnIndex = col + 1; // Update the current column index for the next search
+                            return this.getCell(this._currentMatchRowIndex, this._currentMatchColumnIndex);
                         }
                     }
+                    this._currentMatchColumnIndex = values[row].length; // Reset column index to the end of the previous row
                 }
                 return null; // No match found
             }
