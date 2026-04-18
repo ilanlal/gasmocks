@@ -71,7 +71,8 @@ class SheetStubConfiguration {
      * Returns the range as specified in A1 notation or R1C1 notation.
      */
     getRange(a1Notation) {
-        return this._range.setA1Notation(a1Notation);
+        return this._range.setA1Notation(a1Notation)
+            .setValues(this._range.getValues());
     }
 
     getSelection() {
@@ -91,6 +92,7 @@ class SheetStubConfiguration {
         // if selection is string
         if (typeof selection === 'string') {
             this._selection = RangeStubConfiguration.setA1Notation(selection)
+                .setValues(RangeStubConfiguration.getValues());
         } else {
             this._selection = selection
         }
