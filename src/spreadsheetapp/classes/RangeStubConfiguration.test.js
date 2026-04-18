@@ -30,16 +30,45 @@ describe('RangeStubConfiguration', () => {
         expect(cell.getA1Notation()).toBe('A1');
     });
 
-    it('Should create a text finder', () => {
-        const textFinder = RangeStubConfiguration.createTextFinder('test');
-        expect(textFinder).toBeDefined();
-        expect(textFinder.findText).toBe('test');
-    });
-
     // getRow test
     it('Should get the row number of the range', () => {
         RangeStubConfiguration.setA1Notation('B2');
         const row = RangeStubConfiguration.getRow();
         expect(row).toBe(2);
     });
+
+    describe('createTextFinder', () => {
+        it('Should create a TextFinder with the specified text', () => {
+            const findText = 'Test';
+            const textFinder = RangeStubConfiguration.createTextFinder(findText);
+            expect(textFinder).toBeDefined();
+            expect(textFinder.findText).toBe(findText);
+        });
+
+        // findNext test
+        it('Should find the next occurrence of the text', () => {
+            const findText = 'Test';
+            RangeStubConfiguration.setValues([['Test', 'No Match'], ['No Match', 'Test']]);
+            const textFinder = RangeStubConfiguration.createTextFinder(findText);
+            const firstMatch = textFinder.findNext();
+            expect(firstMatch.getA1Notation()).toBe('A1');
+            const secondMatch = textFinder.findNext();
+            expect(secondMatch.getA1Notation()).toBe('B2');
+        });
+
+        // findAll test
+        it('Should find all occurrences of the text', () => {
+            const findText = 'Test';
+            RangeStubConfiguration.setValues([['Test', 'No Match'], ['No Match', 'Test']]);
+            const textFinder = RangeStubConfiguration.createTextFinder(findText);
+            const allMatches = textFinder.findAll();
+            expect(allMatches.length).toBe(2);
+            expect(allMatches[0].getA1Notation()).toBe('A1');
+            expect(allMatches[1].getA1Notation()).toBe('B2');
+        });
+
+    });
+
+    
+
 });

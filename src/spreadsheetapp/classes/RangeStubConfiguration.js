@@ -44,32 +44,30 @@ class RangeStubConfiguration {
                 for (let row = 0; row < values.length; row++) {
                     for (let col = 0; col < values[row].length; col++) {
                         if (values[row][col] === findText) {
-                            matches.push(this.getCell(row + 1, col + 1));
+                            this._currentMatchRowIndex = row + 1; // Update the current row index for the next search
+                            this._currentMatchColumnIndex = col + 1; // Update the current column index for the next search
+                            // Store the match in the matches array
+                            const cell = this.getCell(this._currentMatchRowIndex, this._currentMatchColumnIndex);
+                            matches.push(cell);
                         }
                     }
+                    this._currentMatchColumnIndex = 0; // Reset column index to the start of the next row
                 }
                 return matches;
             },
             findPrevious: () => {
                 const values = this.getValues();
-
-                // reset the _currentMatchRowIndex and _currentMatchColumnIndex to the end of the range if they are out of bounds
-                if (this._currentMatchRowIndex < 1 || this._currentMatchColumnIndex < 1) {
-                    this._currentMatchRowIndex = values.length;
-                    this._currentMatchColumnIndex = values[values.length - 1].length;
-                }
-
-                // Search backwards from the current position
                 for (let row = this._currentMatchRowIndex - 1; row >= 0; row--) {
                     for (let col = this._currentMatchColumnIndex - 1; col >= 0; col--) {
                         if (values[row][col] === findText) {
                             this._currentMatchRowIndex = row + 1; // Update the current row index for the next search
                             this._currentMatchColumnIndex = col + 1; // Update the current column index for the next search
-                            return this.getCell(this._currentMatchRowIndex - 1, this._currentMatchColumnIndex - 1);
+                            return this.getCell(row + 1, col + 1);
                         }
                     }
                     this._currentMatchColumnIndex = values[row].length; // Reset column index to the end of the previous row
                 }
+
                 return null; // No match found
             }
 
@@ -81,12 +79,11 @@ class RangeStubConfiguration {
     }
 
     getCell(row, column) {
-        const values = this.getValues();
-        if (row < 1 || column < 1 || row > values.length || column > values[0].length) {
-            throw new Error('Cell out of range');
-        }
-        const cellValue = values[row - 1][column - 1];
-        return this.setA1Notation(`${String.fromCharCode(64 + column)}${row}`).setValue(cellValue);
+        // Return a new RangeStubConfiguration representing the cell at the specified row and column
+        const cell = new RangeStubConfiguration();
+        cell.setA1Notation(`${String.fromCharCode(64 + column)}${row}`);
+        cell.setValues([[this._values[row - 1] ? this._values[row - 1][column - 1] : null]]);
+        return cell;
     }
 
     getHorizontalAlignment() {
@@ -194,6 +191,8 @@ class RangeStubConfiguration {
         this._sheet = SheetStubConfiguration;
         this._a1Notation = 'A1';
         this._values = [[]];
+        this._currentMatchRowIndex = 0;
+        this._currentMatchColumnIndex = 0;
     }
 }
 
